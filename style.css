@@ -1,0 +1,12 @@
+* {
+    background-color: #3A3A3A;
+}
+
+#sr_tag {
+    display: flex;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transform: translateY(-10%);
+}
