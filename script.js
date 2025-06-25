@@ -1,1 +1,3 @@
-console.log("77");
+window.onload = function() {
+    alert("buildings");
+};
