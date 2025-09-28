@@ -3,18 +3,28 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="icon.png">
         <link rel="stylesheet" href="style.css">
-        <title>Bamuel Sayliss</title>
+        <link rel="stylesheet" href="ticker.css">
+        <link rel="icon" type="image/png" href="icon.png">
+        <title>DUNGEON</title>
     </head>
     <body>
-        <button id="ms"><h1>Click Mouse</h1></button>
-        <button id="clr"><h2>Clear Lines</h2></button>
-        <svg id="holder" xmlns="http://www.w3.org/2000/svg">
-            <path id="path1" d="">
-        </svg>
-        <img id="dvd" src="test.jpg" alt="pencil">
+        <img src="test.png" id="backg">
+        <div id="cover"></div>
+        <div class="ticker-wrapper" id="newsTicker">
+            <div class="ticker__track" id="tickerTrack">
+                <div class="ticker__item">Breaking: Khaleb now #1 on smart revise.</div>
+                <div class="ticker__item">Breaking: Sam scores 77wpm on monkeytype.</div>
+                <div class="ticker__item">Weather: Heavy rain could flood the dungeon.</div>
+                <div class="ticker__item">Sports: Simon still playing badminton in Thailand.</div>
+                <div class="ticker__item">Global: Dread pirate roberts at large.</div>
+            </div>
+        </div>
+        <div class="switchholder">
+            <img src="switchoff.png" id="lightswitch">
+            <div id="switchbtn"></div>
+        </div>
         <script src="script.js"></script>
-        <script src="dvd.js"></script>
+        <script src="news.js"></script>
     </body>
 </html>
