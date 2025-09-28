@@ -1,41 +1,50 @@
-const holder = document.getElementById("holder");
-let button = document.getElementById("clr");
-let path = document.getElementById("path1");
-let mousedown = false;
+const backg = document.getElementById("backg");
+const cover = document.getElementById("cover");
+const switchholder = document.getElementsByClassName("switchholder")[0];
+const switchimg = document.getElementById("lightswitch");
+const switchbtn = document.getElementById("switchbtn");
+let switch_state = 1;
 
-function get_path() {
-    return path.getAttribute("d");
+function newschange(visible) {
+    const newsticker = document.getElementById("newsTicker");
+    const tickerTrack = document.getElementById("tickerTrack");
+    const items = document.getElementsByClassName("ticker__item");
+
+    newsticker.style.visibility = visible;
+    tickerTrack.style.visibility = visible;
+
+    Array.from(items).forEach(element => {
+        element.style.visibility = visible;
+    });
 }
 
-function add_route(x, y) {
+function lightsOn() {
+    cover.style.backgroundColor = "#FFFFFF00";
 
-    if (get_path().length == 0) {
-        path.setAttribute("d", `M${x} ${y}`);
+    switchholder.style.width = "100px";
+    switchholder.style.height = "100px";
+    switchholder.style.top = "10%";
+    newschange("visible");
+}
+
+function lightsOff() {
+    cover.style.backgroundColor = "#444444FF";
+    
+    switchholder.style.width = "300px";
+    switchholder.style.height = "300px";
+    switchholder.style.top = "50%";
+    newschange("hidden");
+}
+
+switchbtn.addEventListener("mousedown", () => {
+    if (switch_state == 1) {
+        switchimg.src = "switchon.png";
+        lightsOn();
     } else {
-        path.setAttribute("d", `${get_path()} L${x} ${y}`);
+        switchimg.src = "switchoff.png";
+        lightsOff();
     }
-    get_path();
-}
-
-button.addEventListener("click", function(){
-    holder.replaceChildren();
+    switch_state *= -1;
 });
 
-function create_path(x, y) {
-    path = document.createElementNS('http://www.w3.org/2000/svg',"path");
-    path.setAttribute("d", `M${x} ${y}`)
-    holder.appendChild(path);
-}
-
-document.addEventListener("mousemove", (event) => {
-    if (mousedown) {
-        add_route(event.x, event.y)
-    }
-});
-
-document.addEventListener("mousedown", (e) => {
-    create_path(e.x, e.y);
-    mousedown = true;
-});
-
-document.addEventListener("mouseup", function(){mousedown=false});
+window.onload = newschange("hidden");
